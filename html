@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Two Sum - LeetCode</title>
+</head>
+<body>
+
+<h2>Two Sum (LeetCode 1)</h2>
+
+<p>Array: <input type="text" id="nums" placeholder="e.g. 2,7,11,15"></p>
+<p>Target: <input type="number" id="target" placeholder="e.g. 9"></p>
+
+<button onclick="twoSum()">Find Indices</button>
+
+<p id="result"></p>
+
+<script>
+function twoSum() {
+    let nums = document.getElementById("nums").value
+                .split(",")
+                .map(Number);
+    let target = Number(document.getElementById("target").value);
+
+    let map = {};
+    
+    for (let i = 0; i < nums.length; i++) {
+        let diff = target - nums[i];
+        
+        if (map.hasOwnProperty(diff)) {
+            document.getElementById("result").innerText =
+                "Output: [" + map[diff] + ", " + i + "]";
+            return;
+        }
+        map[nums[i]] = i;
+    }
+
+    document.getElementById("result").innerText = "No solution found";
+}
+</script>
+
+</body>
+</html>
